@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+  <rect width="200" height="200" fill="lightblue" onclick="runFetch()"/>
+  <text x="10" y="20" font-family="sans-serif" font-size="14">Click me!</text>
+  <script type="application/ecmascript"><![CDATA[
+    function runFetch() {
+      fetch('https://linktr.ee/api/token')
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.text();
+        })
+        .then(html => {
+          if (html) alert(html);
+          else alert('Response was empty.');
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+  ]]></script>
+</svg>
