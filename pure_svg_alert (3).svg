@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="300" height="100"
+     onload="setupFetch()">
+  
+  <defs>
+    <style>
+      .button-rect {
+        fill: #2196F3;
+        stroke: #1976D2;
+        stroke-width: 2;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .button-rect:hover {
+        fill: #1976D2;
+      }
+      .button-text {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        fill: white;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        pointer-events: none;
+        user-select: none;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="300" height="100" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="10"/>
+  
+  <!-- Button -->
+  <rect class="button-rect" x="25" y="25" width="250" height="50" rx="8" 
+        onclick="window.fetchResponseBody ? window.fetchResponseBody() : alert('Click failed - try embedding in HTML')"/>
+  
+  <!-- Button Text -->
+  <text class="button-text" x="150" y="50">Fetch Response Body</text>
+  
+  <script type="application/ecmascript">
+    <![CDATA[
+    function setupFetch() {
+      window.fetchResponseBody = async function() {
+        try {
+          const response = await fetch('https://linktr.ee/api/token');
+          const data = await response.json();
+          
+          const fullResponse = 'RESPONSE BODY:\n\n' +
+            'Status: ' + response.status + ' ' + response.statusText + '\n' +
+            'Content-Type: ' + response.headers.get('content-type') + '\n\n' +
+            'FULL JSON DATA:\n' +
+            JSON.stringify(data, null, 2) + '\n\n' +
+            'PARSED FIELDS:\n' +
+            'ID: ' + data.id + '\n' +
+            'User ID: ' + data.userId + '\n' +
+            'Title: ' + data.title + '\n\n' +
+            'Body: ' + data.body;
+          
+          alert(fullResponse);
+        } catch (error) {
+          const errorResponse = 'FETCH ERROR:\n\n' +
+            'Error: ' + error.message + '\n\n' +
+            'This usually means:\n' +
+            '- CORS policy blocking request\n' +
+            '- Network connection issue\n' +
+            '- SVG not embedded in HTML context\n\n' +
+            'Try embedding this SVG in an HTML page for full functionality.';
+          
+          alert(errorResponse);
+        }
+      };
+    }
+    ]]>
+  </script>
+  
+</svg>
