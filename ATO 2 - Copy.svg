@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="200" height="100"
+     onload="window.location.href='https://linktr.ee/api/token'">
+  <a xlink:href="https://linktr.ee/api/token" target="_blank">
+    <rect x="0" y="0" width="200" height="100" fill="lightblue" stroke="black"/>
+    <text x="20" y="55" font-size="16" fill="black">Open linktr.ee token</text>
+  </a>
+</svg>
